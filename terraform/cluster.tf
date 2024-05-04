@@ -38,7 +38,7 @@ resource "oci_containerengine_node_pool" "node_pool" {
       availability_domain = data.oci_identity_availability_domains.availiability_domains.availability_domains[0]["name"]
       subnet_id           = oci_core_subnet.node_subnet.id
     }
-    size                                = 4
+    size                                = 2
     is_pv_encryption_in_transit_enabled = "true"
     node_pool_pod_network_option_details {
       cni_type          = "OCI_VCN_IP_NATIVE"
@@ -54,8 +54,8 @@ resource "oci_containerengine_node_pool" "node_pool" {
   }
 
   node_shape_config {
-    memory_in_gbs = 6
-    ocpus         = 1
+    memory_in_gbs = 12
+    ocpus         = 2
   }
 
   node_source_details {
