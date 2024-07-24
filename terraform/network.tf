@@ -99,7 +99,7 @@ resource "oci_core_subnet" "node_subnet" {
   prohibit_public_ip_on_vnic = "true"
   route_table_id             = oci_core_route_table.node_route_table.id
   security_list_ids = [
-    oci_core_vcn.cluster_vcn.default_security_list_id,
+    oci_core_security_list.node_security_list.id,
   ]
 }
 
@@ -408,6 +408,15 @@ resource "oci_core_security_list" "node_security_list" {
     tcp_options {
       max = "12250"
       min = "12250"
+    }
+  }
+  egress_security_rules {
+    destination      = "0.0.0.0/0"
+    destination_type = "CIDR_BLOCK"
+    protocol         = "6"
+    tcp_options {
+      max = "443"
+      min = "443"
     }
   }
 

@@ -10,7 +10,7 @@ variable "oci_regional_service_ocid" { type = string }
 variable "oci_regional_service_name" { type = string }
 
 variable "resource_prefix" { default = "backend" }
-variable "kubernetes_version" { default = "v1.29.1" }
+variable "kubernetes_version" { default = "v1.30.1" }
 
 variable "cluster_vcn_cidr" { default = "10.0.0.0/16" }
 variable "api_subnet_cidr" { default = "10.0.100.0/24" }
